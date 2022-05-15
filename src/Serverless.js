@@ -54,7 +54,7 @@ class Serverless {
     );
 
     this.dir = this.getProjectDir();
-    console.log(`[PA] Serverless this.dir: ${this.dir}`)
+    console.log(`[PA] Serverless constructor, this.dir: ${this.dir}`)
   }
 
   initializeEnvironmentVariables() {
@@ -157,6 +157,7 @@ class Serverless {
   }
 
   async getOutput() {
+    console.log(`[PA] Serverless.getOutput, this.dir: ${this.dir}`)
     if (this.dir.startsWith("/var/task/")) {
       process.chdir(this.dir);
     }
@@ -178,14 +179,14 @@ class Serverless {
       throw err;
     }
 
-    debug(`Current dir: ${process.cwd()}`);
-    debug(`Project dir: ${this.dir}`);
-    debug(`Config path:  ${configPath}`);
+    console.log(`[PA] Serverless.getOutput, Current dir: ${process.cwd()}`);
+    console.log(`[PA] Serverless.getOutput, Project dir: ${this.dir}`);
+    console.log(`[PA] Serverless.getOutput, Config path:  ${configPath}`);
 
-    debug(`Input dir: ${inputDir}`);
-    debug(`Requested URL:  ${this.path}`);
-    debug("Path params: %o", pathParams);
-    debug(`Input path:  ${inputPath}`);
+    console.log(`[PA] Serverless.getOutput, Input dir: ${inputDir}`);
+    console.log(`[PA] Serverless.getOutput, Requested URL:  ${this.path}`);
+    console.log("[PA] Serverless.getOutput, Path params: %o", pathParams);
+    console.log(`[PA] Serverless.getOutput, Input path:  ${inputPath}`);
 
     // TODO (@zachleat) change to use this hook: https://github.com/11ty/eleventy/issues/1957
     this.initializeEnvironmentVariables();
@@ -215,6 +216,7 @@ class Serverless {
     });
 
     let json = await elev.toJSON();
+    console.log(`[PA] Serverless.getOutput, json: ${json}`)
 
     // TODO (@zachleat)  https://github.com/11ty/eleventy/issues/1957
     this.deleteEnvironmentVariables();
