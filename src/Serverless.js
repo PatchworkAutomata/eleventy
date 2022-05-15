@@ -54,6 +54,7 @@ class Serverless {
     );
 
     this.dir = this.getProjectDir();
+    console.log(`[PA] Serverless this.dir: ${this.dir}`)
   }
 
   initializeEnvironmentVariables() {
