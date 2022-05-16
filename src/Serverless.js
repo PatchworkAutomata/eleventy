@@ -196,6 +196,7 @@ class Serverless {
       inputDir,
       config: (eleventyConfig) => {
         if (Object.keys(this.options.precompiledCollections).length > 0) {
+          console.log(`[PA] Serverless.getOutput elev, this.options.precompiledCollections: ${this.options.precompiledCollections}`);
           eleventyConfig.setPrecompiledCollections(
             this.options.precompiledCollections
           );
@@ -206,17 +207,20 @@ class Serverless {
           query: this.options.query,
           path: pathParams,
         };
+        console.log(`[PA] Serverless.getOutput elev, this.options.query:  ${this.options.query}`);
+        console.log(`[PA] Serverless.getOutput elev, pathParams:  $pathParams`);
 
         eleventyConfig.addGlobalData("eleventy.serverless", globalData);
 
         if (this.options.config && typeof this.options.config === "function") {
+          console.log("[PA] Serverless.getOutput elev, eleventyConfig: %o", eleventyConfig);
           this.options.config(eleventyConfig);
         }
       },
     });
 
     let json = await elev.toJSON();
-    console.log(`[PA] Serverless.getOutput, json: ${json}`)
+    console.log("[PA] Serverless.getOutput, json: %o", json);
 
     // TODO (@zachleat)  https://github.com/11ty/eleventy/issues/1957
     this.deleteEnvironmentVariables();
