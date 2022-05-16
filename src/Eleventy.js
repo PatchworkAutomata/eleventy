@@ -938,6 +938,7 @@ Arguments:
    * @returns {Promise<{}>}
    */
   async toJSON() {
+        console.log(`[PA] Eleventy.toJSON what are we doing here?`);
     return this.executeBuild("json");
   }
 
@@ -981,6 +982,7 @@ Arguments:
     let hasError = false;
 
     try {
+      console.log(`[PA] Eleventy.executeBuild this.config.inputDir:  ${this.config.inputDir}`);
       let eventsArg = {
         inputDir: this.config.inputDir,
       };

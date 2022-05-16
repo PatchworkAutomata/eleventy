@@ -207,8 +207,8 @@ class Serverless {
           query: this.options.query,
           path: pathParams,
         };
-        console.log(`[PA] Serverless.getOutput elev, this.options.query:  ${this.options.query}`);
-        console.log(`[PA] Serverless.getOutput elev, pathParams:  $pathParams`);
+        console.log("[PA] Serverless.getOutput elev, this.options.query: %o", this.options.query);
+        console.log("[PA] Serverless.getOutput elev, pathParams: %o", pathParams);
 
         eleventyConfig.addGlobalData("eleventy.serverless", globalData);
 
